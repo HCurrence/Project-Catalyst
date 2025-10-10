@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CameraController : MonoBehaviour
     public float minimumY = -60F;
     public float maximumY = 60F;
     public float frameCounter = 20;
+
+    private InputAction mouseMovementAction;
 
     private float rotationX = 0F;
     private float rotationY = 0F;
@@ -29,6 +32,9 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
+
+        mouseMovementAction = InputSystem.actions.FindAction("Look");
+
         if (rb)
         {
             rb.freezeRotation = true;
